@@ -1,6 +1,6 @@
 import os
 from uuid import UUID
-from allure_commons.utils import md5
+from allure_commons.utils import md5, represent
 from allure_commons.model2 import StatusDetails
 from allure_commons.model2 import Status
 from allure_commons.model2 import Parameter
@@ -49,4 +49,4 @@ def get_pytest_report_status(pytest_report):
 def get_params(node):
     if hasattr(node, 'callspec'):
         params = node.callspec.params
-        return [Parameter(name=name, value=value) for name, value in params.items()]
+        return [Parameter(name=name, value=represent(value)) for name, value in params.items()]
